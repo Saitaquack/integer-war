@@ -1,3 +1,31 @@
-h1{
-    color: red;
+:root{
+    --main-red: #a41605;
+    --main-blue: #2154a2;
+}
+body{
+    font-family: 'Open Sans', sans-serif; 
+    background-color: white;
+    color: white;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25vh;
+}
+
+.number-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+#war-score{
+    font-family: 'Comfortaa', cursive;
+    font-size: 50px;
+    font-weight: bold;
 }

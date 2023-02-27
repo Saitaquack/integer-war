@@ -17,6 +17,21 @@ io.on('connection', socket => {
         userCount--;
         console.log(`An user disconnected. Users online : ${userCount}`);
     });
+
+    io.emit('warscore', warScore);
+    socket.on('updatescore', function(sign){
+        io.emit('warscore', warScore);
+        
+        if(sign.sign == 'plus'){
+            warScore++;
+        }
+        else if(sign.sign == 'minus') {
+            warScore--;
+        }
+        else{
+            console.log("Invalid score update.");
+        }
+    });
 });
 
 
