@@ -6,6 +6,7 @@ const io = require('socket.io')(server);
 app.use(express.static("public"));
 
 let userCount = 0;
+
 let warSeason = 1;
 let warScore = 0;
 
@@ -19,18 +20,19 @@ io.on('connection', socket => {
     });
 
     io.emit('warscore', warScore);
-    socket.on('updatescore', function(sign){
-        io.emit('warscore', warScore);
+    io.emit('season', warSeason);
+    socket.on('updatescore', function(data){
         
-        if(sign.sign == 'plus'){
+        if(data.value == 'add'){
             warScore++;
         }
-        else if(sign.sign == 'minus') {
+        else if(data.value == 'sub') {
             warScore--;
         }
         else{
             console.log("Invalid score update.");
         }
+        io.emit('warscore', warScore);
     });
 });
 
