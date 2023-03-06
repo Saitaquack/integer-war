@@ -2,21 +2,22 @@ let socket = io();
 
 let minusButton = document.getElementById('decrease-score');
 let plusButton = document.getElementById('increase-score');
+let warseason = document.getElementById("season");
+let warscore = document.getElementById("war-score");
 
 particlesJS.load('particles-js', 'libs/particles.json', function() {
     console.log('callback - particles.js config loaded');
   });
 
 socket.on('season', function(season){
-    let warseason = document.getElementById("season");
-    warseason.innerText = "Season "+season+"";
+    warseason.innerText = `Season ${season}`;
 })
-socket.on('warscore', function(score){
-    let warscore = document.getElementById("war-score");
-    warscore.innerText = score;
 
-    let gradientScore = score/40 + 85;
-    
+socket.on('warscore', function(score){
+    warscore.innerText = score;
+    document.title = `Integer War - Current Score : ${score}`;
+
+    let gradientScore = score/40 + 85;   
     if(gradientScore < 15)
     {
         gradientScore = 15;
@@ -25,7 +26,7 @@ socket.on('warscore', function(score){
     {
         gradientScore = 185;
     }
-    document.body.style = "background: linear-gradient(to left bottom, var(--main-red), #ac0041, #9a1b72, #6f3f95, var(--main-blue) "+gradientScore+"%); background-attachment: fixed;";
+    document.body.style = `background: linear-gradient(to left bottom, var(--main-red), #ac0041, #9a1b72, #6f3f95, var(--main-blue) ${gradientScore}%); background-attachment: fixed;`;
 });
 
 minusButton.addEventListener("click", function(){
