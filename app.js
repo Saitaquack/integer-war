@@ -16,25 +16,41 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         userCount--;
-        console.log(`An user disconnected. Users online : ${userCount}`);
+        console.log(`A user disconnected. Users online : ${userCount}`);
     });
 
     io.emit('warscore', warScore);
     io.emit('season', warSeason);
     socket.on('updatescore', function(data){
-        
-        if(data.value == 'add'){
-            warScore++;
+
+        if(data != null)
+        {
+            switch(data.value)
+            {
+                case 'add':
+                    warScore++;
+                    io.emit('warscore', warScore);
+                break;
+                case 'sub':
+                    warScore--;
+                    io.emit('warscore', warScore);
+                break;
+                default:
+                    console.log("User sent invalid score update. They probably used the JS Console.");
+            }
         }
-        else if(data.value == 'sub') {
-            warScore--;
-        }
-        else{
-            console.log("Invalid score update.");
-        }
-        io.emit('warscore', warScore);
+        else
+        {
+            console.log("User sent invalid data for score update. They probably used the JS Console.");
+        }     
     });
 });
+
+/* Code to save War Score if crash occures every 30 seconds */
+
+setInterval(() => {
+    console.log(`War Score is currently : ${warScore}`);
+}, 30000)
 
 
 const port = process.env.PORT || 3000

@@ -6,23 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Integer War</title>
 </head>
-<body style="background: linear-gradient(90deg, var(--main-blue), var(--main-red) 100%);">
-    <div class="wrapper">
+<body>
+    <div id="particles-js"></div>
+    <header>
         <h1>Integer War</h1>
+        <hr>
         <h2 id="season"></h2>
-        <p>Who shall win : Positive or Negative ?</p>
+    </header>  
+    <main>    
+        <p class="side-choose">Choose your side : Positive or Negative</p>
         <div class="number-wrapper">
             <button id="decrease-score">-</button>
             <span id="war-score"></span>
             <button id="increase-score">+</button>
         </div>
-    </div>
+        <p id="battle-commentary"></p>
+    </main>
     <script src="socket.io/socket.io.js"></script>
-    <script src="libs/particles.min.js"></script>
+    <script src="libs/particles.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/battleComments.js"></script>
 </body>
 </html>
