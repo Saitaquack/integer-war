@@ -6,13 +6,14 @@
 body{
     font-family: 'Open Sans', sans-serif; 
     color: white;
-    padding: 20px;
+    padding: 30px;
 }
 
 canvas{
     position: absolute;
     left: 0;
     top: 0;
+    z-index: -1;
 }
 
 h1{
@@ -106,4 +107,45 @@ main{
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 2px;
+}
+
+.chat-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.chat-div input, .chat-div button{
+    background: none;
+    border: solid 2px white;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.chat-div button{
+    text-transform: none;
+    transition: all linear 0.2s;
+    cursor: pointer;
+}
+
+.chat-div button:hover, .chat-div button:active{
+    box-shadow: 0 5px white;
+}
+
+.chat-div button:active{
+    transform: translateY(4px);
+}
+
+::placeholder{
+    color: white;
 }
