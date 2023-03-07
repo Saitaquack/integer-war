@@ -1,3 +1,5 @@
+/* General */
+
 :root{
     --main-red: #a41605;
     --main-blue: #2154a2;
@@ -6,7 +8,12 @@
 body{
     font-family: 'Open Sans', sans-serif; 
     color: white;
+    background: black;
     padding: 30px;
+}
+
+::placeholder{
+    color: white;
 }
 
 canvas{
@@ -16,9 +23,7 @@ canvas{
     z-index: -1;
 }
 
-h1{
-    text-align: left;
-}
+/* Texts */
 
 header{
     text-align: left;
@@ -38,16 +43,33 @@ header hr{
     margin-left: 0;
 }
 
+.side-choose{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#war-score{
+    font-family: 'Comfortaa', cursive;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#battle-commentary{
+    text-align: center;
+    margin-top: 75px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+/* Layouts */
+
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.side-choose{
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .number-wrapper{
@@ -60,10 +82,18 @@ main{
     width: 500px;
 }
 
-#war-score{
-    font-family: 'Comfortaa', cursive;
-    font-size: 50px;
-    font-weight: bold;
+@media screen and (max-width: 750px) {
+
+    .number-wrapper{
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+    .number-wrapper{
+        width: 250px;
+    }
 }
 
 .number-wrapper button{
@@ -80,12 +110,52 @@ main{
     filter: brightness(1.2);
 }
 
-.number-wrapper button:active{
-    transform: translateY(4px);
+.chat-contain{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
 }
+
+#chat{
+    height: 85%;
+    border-bottom: solid 4px white;
+    margin-right: 30px;
+}
+
+#chat p{
+    text-align: right;
+}
+
+.chat-div{
+    margin-top: 10px;
+}
+
+.chat-div button{
+    text-transform: none;
+    transition: all linear 0.2s;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.chat-div input, .chat-div button{
+    background: none;
+    border: solid 2px white;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Hovers, actives */
 
 .number-wrapper button:hover{
     filter: brightness(1.75);
+}
+
+.number-wrapper button:active{
+    transform: translateY(4px);
 }
 
 #decrease-score:active{
@@ -100,44 +170,6 @@ main{
     color: var(--main-red);
 }
 
-#battle-commentary{
-    text-align: center;
-    margin-top: 75px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 2px;
-}
-
-.chat-div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.chat-div input, .chat-div button{
-    background: none;
-    border: solid 2px white;
-    border-radius: 15px;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-.chat-div button{
-    text-transform: none;
-    transition: all linear 0.2s;
-    cursor: pointer;
-}
-
 .chat-div button:hover, .chat-div button:active{
     box-shadow: 0 5px white;
 }
@@ -146,6 +178,3 @@ main{
     transform: translateY(4px);
 }
 
-::placeholder{
-    color: white;
-}
