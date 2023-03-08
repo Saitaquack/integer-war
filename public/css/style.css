@@ -14,6 +14,7 @@ body{
 
 ::placeholder{
     color: white;
+    opacity: 0.4;
 }
 
 canvas{
@@ -21,6 +22,10 @@ canvas{
     left: 0;
     top: 0;
     z-index: -1;
+}
+
+.hidden{
+    display: none !important;
 }
 
 /* Texts */
@@ -121,24 +126,20 @@ main{
     height: 85%;
     border-bottom: solid 4px white;
     margin-right: 30px;
+    overflow-y: scroll;
 }
 
 #chat p{
-    text-align: right;
+    margin-left: 20px;
+    max-width: 250px;
+    overflow-wrap: break-word;
 }
 
 .chat-div{
     margin-top: 10px;
 }
 
-.chat-div button{
-    text-transform: none;
-    transition: all linear 0.2s;
-    cursor: pointer;
-    margin-right: 30px;
-}
-
-.chat-div input, .chat-div button{
+.chat-div input, #send-chat, #hide-chat{
     background: none;
     border: solid 2px white;
     border-radius: 15px;
@@ -146,6 +147,19 @@ main{
     color: white;
     font-weight: bold;
     font-size: 18px;
+}
+
+#send-chat, #hide-chat{
+    text-transform: none;
+    transition: all linear 0.2s;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+#hide-chat{
+    margin-left: auto;
+    display: block;
+    margin-top: 10px;
 }
 
 /* Hovers, actives */
@@ -170,11 +184,11 @@ main{
     color: var(--main-red);
 }
 
-.chat-div button:hover, .chat-div button:active{
+.chat-div button:hover, .chat-div button:active, #hide-chat:hover, #hide-chat:active{
     box-shadow: 0 5px white;
 }
 
-.chat-div button:active{
+.chat-div button:active, #hide-chat:active{
     transform: translateY(4px);
 }
 
