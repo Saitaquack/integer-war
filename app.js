@@ -19,8 +19,8 @@ io.on('connection', socket => {
         console.log(`A user disconnected. Users online : ${userCount}`);
     });
 
-    io.emit('warscore', warScore);
-    io.emit('season', warSeason);
+    socket.emit('warscore', warScore);
+    socket.emit('season', warSeason);
     socket.on('updatescore', function(data){
 
         if(data != null)
@@ -36,17 +36,29 @@ io.on('connection', socket => {
                     io.emit('warscore', warScore);
                 break;
                 default:
-                    console.log("User sent invalid score update. They probably used the JS Console.");
+                    console.log("A user sent invalid score update. They probably used the JS Console.");
             }
         }
         else
         {
-            console.log("User sent invalid data for score update. They probably used the JS Console.");
+            console.log("A user sent invalid data for score update. They probably used the JS Console.");
         }     
+    });
+
+    socket.on('sendchat', function(data){
+        if(data != null)
+        {
+            io.emit('updatechat', data);
+        }
+        else
+        {
+            console.log("A user sent invalid chat message. They probably used the JS Console.")
+        }
+        
     });
 });
 
-/* Code to save War Score if crash occures every 30 seconds */
+/* Code to save War Score every 30 seconds if crash occures */
 
 setInterval(() => {
     console.log(`War Score is currently : ${warScore}`);
